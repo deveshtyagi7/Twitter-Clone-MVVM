@@ -13,6 +13,10 @@
 		1038FD95250565E6008E48CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1038FD94250565E6008E48CB /* Assets.xcassets */; };
 		1038FD98250565E6008E48CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1038FD96250565E6008E48CB /* LaunchScreen.storyboard */; };
 		1038FDAC25056A43008E48CB /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1038FDAB25056A43008E48CB /* MainTabController.swift */; };
+		1038FDAE25056DA2008E48CB /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1038FDAD25056DA2008E48CB /* FeedController.swift */; };
+		1038FDB025056DDE008E48CB /* ExploreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1038FDAF25056DDE008E48CB /* ExploreController.swift */; };
+		1038FDB225056DEF008E48CB /* NotificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1038FDB125056DEF008E48CB /* NotificationsController.swift */; };
+		1038FDB425056E11008E48CB /* ConversationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1038FDB325056E11008E48CB /* ConversationsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		1038FD97250565E6008E48CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1038FD99250565E6008E48CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1038FDAB25056A43008E48CB /* MainTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
+		1038FDAD25056DA2008E48CB /* FeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedController.swift; sourceTree = "<group>"; };
+		1038FDAF25056DDE008E48CB /* ExploreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreController.swift; sourceTree = "<group>"; };
+		1038FDB125056DEF008E48CB /* NotificationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsController.swift; sourceTree = "<group>"; };
+		1038FDB325056E11008E48CB /* ConversationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +84,10 @@
 			isa = PBXGroup;
 			children = (
 				1038FDAB25056A43008E48CB /* MainTabController.swift */,
+				1038FDAD25056DA2008E48CB /* FeedController.swift */,
+				1038FDAF25056DDE008E48CB /* ExploreController.swift */,
+				1038FDB125056DEF008E48CB /* NotificationsController.swift */,
+				1038FDB325056E11008E48CB /* ConversationsController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -186,9 +198,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1038FDB225056DEF008E48CB /* NotificationsController.swift in Sources */,
+				1038FDB425056E11008E48CB /* ConversationsController.swift in Sources */,
 				1038FD8C250565E3008E48CB /* AppDelegate.swift in Sources */,
+				1038FDB025056DDE008E48CB /* ExploreController.swift in Sources */,
 				1038FD8E250565E3008E48CB /* SceneDelegate.swift in Sources */,
 				1038FDAC25056A43008E48CB /* MainTabController.swift in Sources */,
+				1038FDAE25056DA2008E48CB /* FeedController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
