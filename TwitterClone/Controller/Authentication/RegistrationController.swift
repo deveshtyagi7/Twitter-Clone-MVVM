@@ -1,5 +1,5 @@
 //
-//  FeedController.swift
+//  RegistrationController.swift
 //  TwitterClone
 //
 //  Created by Devesh Tyagi on 07/09/20.
@@ -7,9 +7,9 @@
 //
 
 import UIKit
-class FeedController : UIViewController{
+
+class RegistrationController: UIViewController {
     //MARK: - Properties
-    
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -17,14 +17,12 @@ class FeedController : UIViewController{
         configureUI()
     }
     
+    //MARK: - Selectors
+    
     //MARK: - Helpers
     
-    func configureUI()  {
-        view.backgroundColor = .white
-        
-        let imageView = UIImageView(image: UIImage(named: "twitter_logo_blue"))
-        imageView.contentMode = .scaleAspectFit
-        navigationItem.titleView = imageView
+    func configureUI(){
+        view.backgroundColor = .twitterBlue
     }
-    
 }
+

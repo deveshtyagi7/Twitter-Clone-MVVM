@@ -1,5 +1,5 @@
 //
-//  FeedController.swift
+//  ConversationsController.swift
 //  TwitterClone
 //
 //  Created by Devesh Tyagi on 07/09/20.
@@ -7,7 +7,7 @@
 //
 
 import UIKit
-class FeedController : UIViewController{
+class ConversationsController : UIViewController{
     //MARK: - Properties
     
     
@@ -18,13 +18,9 @@ class FeedController : UIViewController{
     }
     
     //MARK: - Helpers
-    
     func configureUI()  {
         view.backgroundColor = .white
-        
-        let imageView = UIImageView(image: UIImage(named: "twitter_logo_blue"))
-        imageView.contentMode = .scaleAspectFit
-        navigationItem.titleView = imageView
+        navigationItem.title  = "Messages"
     }
     
 }

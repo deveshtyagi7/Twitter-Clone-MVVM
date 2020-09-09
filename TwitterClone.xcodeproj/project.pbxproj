@@ -17,6 +17,10 @@
 		1038FDB025056DDE008E48CB /* ExploreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1038FDAF25056DDE008E48CB /* ExploreController.swift */; };
 		1038FDB225056DEF008E48CB /* NotificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1038FDB125056DEF008E48CB /* NotificationsController.swift */; };
 		1038FDB425056E11008E48CB /* ConversationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1038FDB325056E11008E48CB /* ConversationsController.swift */; };
+		106E4F7B2507712800C8F4A2 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106E4F7A2507712800C8F4A2 /* Utilities.swift */; };
+		107C65B9250658880018BD4B /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107C65B8250658880018BD4B /* LoginController.swift */; };
+		107C65BB2506598A0018BD4B /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107C65BA2506598A0018BD4B /* RegistrationController.swift */; };
+		10C53BE125064DA300F64161 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C53BE025064DA300F64161 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +36,10 @@
 		1038FDAF25056DDE008E48CB /* ExploreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreController.swift; sourceTree = "<group>"; };
 		1038FDB125056DEF008E48CB /* NotificationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsController.swift; sourceTree = "<group>"; };
 		1038FDB325056E11008E48CB /* ConversationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsController.swift; sourceTree = "<group>"; };
+		106E4F7A2507712800C8F4A2 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		107C65B8250658880018BD4B /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		107C65BA2506598A0018BD4B /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
+		10C53BE025064DA300F64161 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +91,7 @@
 		1038FDA22505666A008E48CB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				107C65B7250658560018BD4B /* Authentication */,
 				1038FDAB25056A43008E48CB /* MainTabController.swift */,
 				1038FDAD25056DA2008E48CB /* FeedController.swift */,
 				1038FDAF25056DDE008E48CB /* ExploreController.swift */,
@@ -123,8 +132,19 @@
 		1038FDAA250569EF008E48CB /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				10C53BE025064DA300F64161 /* Extensions.swift */,
+				106E4F7A2507712800C8F4A2 /* Utilities.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		107C65B7250658560018BD4B /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				107C65B8250658880018BD4B /* LoginController.swift */,
+				107C65BA2506598A0018BD4B /* RegistrationController.swift */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,10 +220,14 @@
 			files = (
 				1038FDB225056DEF008E48CB /* NotificationsController.swift in Sources */,
 				1038FDB425056E11008E48CB /* ConversationsController.swift in Sources */,
+				106E4F7B2507712800C8F4A2 /* Utilities.swift in Sources */,
 				1038FD8C250565E3008E48CB /* AppDelegate.swift in Sources */,
+				10C53BE125064DA300F64161 /* Extensions.swift in Sources */,
+				107C65B9250658880018BD4B /* LoginController.swift in Sources */,
 				1038FDB025056DDE008E48CB /* ExploreController.swift in Sources */,
 				1038FD8E250565E3008E48CB /* SceneDelegate.swift in Sources */,
 				1038FDAC25056A43008E48CB /* MainTabController.swift in Sources */,
+				107C65BB2506598A0018BD4B /* RegistrationController.swift in Sources */,
 				1038FDAE25056DA2008E48CB /* FeedController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
