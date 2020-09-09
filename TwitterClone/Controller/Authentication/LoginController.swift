@@ -20,13 +20,13 @@ class LoginController: UIViewController {
     
     private lazy var emailConatainerView: UIView = {
         let image = #imageLiteral(resourceName: "ic_mail_outline_white_2x-1")
-        let view = Utilities().inputContainerView(withImage: image, textField: self.emailTextField)
+        let view = Utilities().inputContainerView(withImage: image, textField: emailTextField)
         return view
     }()
     
     private lazy var passwordConatainerView: UIView = {
         let image = #imageLiteral(resourceName: "ic_lock_outline_white_2x")
-        let view = Utilities().inputContainerView(withImage: image, textField: self.passwordTextField)
+        let view = Utilities().inputContainerView(withImage: image, textField: passwordTextField)
         return view
     }()
     
@@ -67,11 +67,12 @@ class LoginController: UIViewController {
     
     //MARK: - Selectors
     @objc func handleLogin(){
-        print("handle login")
+        
     }
     
     @objc func handleShowSignUp(){
-        
+        let controller = RegistrationController()
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     //MARK: - Helpers
@@ -95,7 +96,7 @@ class LoginController: UIViewController {
         stack.anchor(top : logoImageView.bottomAnchor , left: view.leftAnchor , right:                               view.rightAnchor,paddingLeft: 32,paddingRight: 32)
         
         view.addSubview(dontHaveAccountButton)
-        dontHaveAccountButton.anchor(left: view.leftAnchor,bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingLeft: 40, paddingRight: 16 )
+        dontHaveAccountButton.anchor(left: view.leftAnchor,bottom: view.safeAreaLayoutGuide.bottomAnchor,                            right: view.rightAnchor, paddingLeft: 40, paddingRight: 16 )
         
     }
     
