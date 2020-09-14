@@ -21,6 +21,7 @@
 		107C65B9250658880018BD4B /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107C65B8250658880018BD4B /* LoginController.swift */; };
 		107C65BB2506598A0018BD4B /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107C65BA2506598A0018BD4B /* RegistrationController.swift */; };
 		10A55C43250FF2EC009D47AE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A55C42250FF2EC009D47AE /* Constants.swift */; };
+		10A55C45250FF961009D47AE /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A55C44250FF961009D47AE /* AuthService.swift */; };
 		10AF310F250A8E8500C57163 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10AF310E250A8E8500C57163 /* GoogleService-Info.plist */; };
 		10C53BE125064DA300F64161 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C53BE025064DA300F64161 /* Extensions.swift */; };
 		2175F76B2880C91630F82EDC /* Pods_TwitterClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 749668016CD0023ADE7CC653 /* Pods_TwitterClone.framework */; };
@@ -44,6 +45,7 @@
 		107C65B8250658880018BD4B /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		107C65BA2506598A0018BD4B /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		10A55C42250FF2EC009D47AE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		10A55C44250FF961009D47AE /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		10AF310E250A8E8500C57163 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		10C53BE025064DA300F64161 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		749668016CD0023ADE7CC653 /* Pods_TwitterClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwitterClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,6 +139,7 @@
 		1038FDA9250569E7008E48CB /* API */ = {
 			isa = PBXGroup;
 			children = (
+				10A55C44250FF961009D47AE /* AuthService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				1038FD8C250565E3008E48CB /* AppDelegate.swift in Sources */,
 				10C53BE125064DA300F64161 /* Extensions.swift in Sources */,
 				107C65B9250658880018BD4B /* LoginController.swift in Sources */,
+				10A55C45250FF961009D47AE /* AuthService.swift in Sources */,
 				1038FDB025056DDE008E48CB /* ExploreController.swift in Sources */,
 				1038FD8E250565E3008E48CB /* SceneDelegate.swift in Sources */,
 				1038FDAC25056A43008E48CB /* MainTabController.swift in Sources */,
@@ -380,7 +384,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -434,7 +438,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -461,7 +465,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -482,7 +486,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
