@@ -105,23 +105,33 @@ class RegistrationController: UIViewController {
         guard  let username = usernameTextField.text else { return }
         
         guard let imageData = profileImage.jpegData(compressionQuality: 0.3) else { return }
-        let filename
+        let filename = NSUUID().uuidString
+        let storageRef = STORAGE_PROFILE_IMAGES.child(filename)
         
-        Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
-            if let err = err{
-                print("DEBUG : Error is \(err.localizedDescription)")
-                return
-            }
-            
-            guard let uid = result?.user.uid else { return }
-            
-            let values = ["email" : email, "username" : username, "fullname" : fullname ]
-            
-           
-            REF_USERS.child(uid).updateChildValues(values) { (error, ref) in
-                print("Added successfully!")
+        
+        storageRef.putData(imageData, metadata: nil) { (meta, error) in
+            storageRef.downloadURL { (url, error) in
+                guard let profileImageUrl = url?.absoluteString else { return }
+                
+                Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
+                    if let err = err{
+                        print("DEBUG : Error is \(err.localizedDescription)")
+                        return
+                    }
+                    guard let uid = result?.user.uid else { return }
+                    let values = ["email" : email,
+                                  "username" : username,
+                                  "fullname" : fullname,
+                                  "profilrImageUrl" : profileImageUrl]
+                    
+                    REF_USERS.child(uid).updateChildValues(values) { (error, ref) in
+                        print("Added successfully!")
+                    }
+                }
+                
             }
         }
+        
     }
     
     @objc func handleShowLogin(){
@@ -165,7 +175,7 @@ class RegistrationController: UIViewController {
 
 extension RegistrationController : UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo
-        info: [UIImagePickerController.InfoKey : Any]){
+                                info: [UIImagePickerController.InfoKey : Any]){
         guard let profileImage = info[.editedImage] as? UIImage else {return}
         self.profileImage = profileImage
         
