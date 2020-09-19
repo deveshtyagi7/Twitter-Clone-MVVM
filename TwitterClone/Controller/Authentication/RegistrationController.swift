@@ -109,9 +109,17 @@ class RegistrationController: UIViewController {
         AuthService.shared.registerUser(with: credentials) { (error, ref) in
             if let error = error{
                 //Show error
+                print("Debug : Error while registering ==> \(error.localizedDescription)")
                 
             } else {
                 //Move to home screen
+                guard let window = UIApplication.shared.windows.first(where: { $0.isKeyWindow}) else { return }
+                
+                guard let tab = window.rootViewController as? MainTabController else { return }
+                
+                tab.authenticateUserAndConfigureUI()
+                
+                self.dismiss(animated: true, completion: nil)
                 
             }
         }
