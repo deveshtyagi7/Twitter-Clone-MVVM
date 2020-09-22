@@ -12,6 +12,15 @@ import Firebase
 class MainTabController: UITabBarController {
     
     //MARK: - Properties
+    var user : User? {
+        didSet{
+            guard let nav = viewControllers?[0] as? UINavigationController else { return }
+            guard let feed = nav.viewControllers.first as? FeedController else { return }
+            
+            feed.user = user
+        }
+    }
+    
     let actionButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .white
@@ -24,6 +33,7 @@ class MainTabController: UITabBarController {
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+      //  logUserOut()
         view.backgroundColor = .twitterBlue
         authenticateUserAndConfigureUI()
         
@@ -31,6 +41,13 @@ class MainTabController: UITabBarController {
     }
     
     //MARK: - API
+    
+    func fetchUser(){
+        UserService.shared.fetchUser { (user) in
+            self.user = user
+        }
+    }
+    
     func authenticateUserAndConfigureUI(){
         if Auth.auth().currentUser == nil{
             DispatchQueue.main.async {
@@ -39,8 +56,10 @@ class MainTabController: UITabBarController {
                 self.present(nav, animated: true, completion: nil)
             }
         } else {
+            print("authenticated")
             configureViewControllers()
             configureUI()
+            fetchUser()
         }
     }
     
@@ -56,7 +75,9 @@ class MainTabController: UITabBarController {
     //MARK: - Selectors
     
     @objc func handleActionButtonTapped(){
-        
+        let nav = UINavigationController(rootViewController: UploadTweetController())
+        nav.modalPresentationStyle = .fullScreen
+        present(nav, animated: true, completion: nil)
     }
     
     //MARK: - Helpers

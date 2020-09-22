@@ -65,7 +65,7 @@ class RegistrationController: UIViewController {
     
     private let usernameTextField : UITextField = {
         let tf = Utilities().textFieldWithPlaceholder(withPlaceholder: "Username")
-        tf.isSecureTextEntry = true
+        //tf.isSecureTextEntry = true
         return tf
     }()
     
@@ -171,7 +171,7 @@ class RegistrationController: UIViewController {
 extension RegistrationController : UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo
                                 info: [UIImagePickerController.InfoKey : Any]){
-        guard let profileImage = info[.editedImage] as? UIImage else {return}
+        guard let profileImage = info[.editedImage] as? UIImage else { return }
         self.profileImage = profileImage
         
         plusPhotoButton.layer.cornerRadius = 128 / 2
