@@ -22,5 +22,17 @@ struct TweerServices {
                       "caption" : caption] as [String : Any]
         REF_TWEETS.childByAutoId().updateChildValues(values, withCompletionBlock: completion)
     }
+    
+    func fetchTweets(completion: @escaping([Tweet]) -> Void){
+        var tweets = [Tweet]()
+        
+        REF_TWEETS.observe(.childAdded) { (snapshot) in
+            guard let dict = snapshot.value as? [String : Any] else { return }
+            let tweetID = snapshot.key
+            let tweet = Tweet(tweetID: tweetID, dict: dict)
+            tweets.append(tweet)
+            completion(tweets)
+        }
+    }
 }
 
