@@ -43,6 +43,7 @@ class RegistrationController: UIViewController {
     
     private lazy var passwordConatainerView: UIView = {
         let image = #imageLiteral(resourceName: "ic_lock_outline_white_2x")
+
         let view = Utilities().inputContainerView(withImage: image, textField: passwordTextField)
         return view
     }()

@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import FirebaseAuth
 class FeedController : UIViewController{
     //MARK: - Properties
     var user : User? {
@@ -39,6 +40,15 @@ class FeedController : UIViewController{
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileImageView)
     }
+    fileprivate func configureRightBarButton() {
+       // guard let user = user else { return }
+        
+        let logoutBtn = UIBarButtonItem()
+        logoutBtn.title = "Logout"
+        logoutBtn.target = self
+        logoutBtn.action = #selector(logUserOut)
+        navigationItem.rightBarButtonItem = logoutBtn
+    }
     
     func configureUI()  {
         view.backgroundColor = .white
@@ -47,6 +57,18 @@ class FeedController : UIViewController{
         imageView.contentMode = .scaleAspectFit
         imageView.setDimensions(width: 44, height: 44)
         navigationItem.titleView = imageView
+        configureRightBarButton()
     }
     
+   @objc func logUserOut()  {
+        do{
+            try Auth.auth().signOut()
+            let nav = UINavigationController(rootViewController: LoginController())
+            nav.modalPresentationStyle = .fullScreen
+            present(nav, animated: true, completion: nil)
+        } catch let error {
+            print("Error while loging out \(error.localizedDescription)")
+        }
+       
+    }
 }

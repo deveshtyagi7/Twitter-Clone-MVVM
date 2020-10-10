@@ -26,7 +26,9 @@
 		10A55C45250FF961009D47AE /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A55C44250FF961009D47AE /* AuthService.swift */; };
 		10AF310F250A8E8500C57163 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10AF310E250A8E8500C57163 /* GoogleService-Info.plist */; };
 		10C53BE125064DA300F64161 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C53BE025064DA300F64161 /* Extensions.swift */; };
+		1E65FE13251F518B00AA778F /* CaptionTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E65FE12251F518B00AA778F /* CaptionTextView.swift */; };
 		1E8CE338251A710600879086 /* UploadTweetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8CE337251A710600879086 /* UploadTweetController.swift */; };
+		1EA6848F253216F400D443D3 /* TweetServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA6848E253216F400D443D3 /* TweetServices.swift */; };
 		49D0B469675642F2876B79DF /* Pods_TwitterClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3A3154B7472C0BC479DCB3C /* Pods_TwitterClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,7 +55,9 @@
 		10A55C44250FF961009D47AE /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		10AF310E250A8E8500C57163 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		10C53BE025064DA300F64161 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		1E65FE12251F518B00AA778F /* CaptionTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptionTextView.swift; sourceTree = "<group>"; };
 		1E8CE337251A710600879086 /* UploadTweetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadTweetController.swift; sourceTree = "<group>"; };
+		1EA6848E253216F400D443D3 /* TweetServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetServices.swift; sourceTree = "<group>"; };
 		A868C19DBE10D9670EE98FA3 /* Pods-TwitterClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TwitterClone.release.xcconfig"; path = "Target Support Files/Pods-TwitterClone/Pods-TwitterClone.release.xcconfig"; sourceTree = "<group>"; };
 		F3A3154B7472C0BC479DCB3C /* Pods_TwitterClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TwitterClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -132,6 +136,7 @@
 		1038FDA525056674008E48CB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1E65FE12251F518B00AA778F /* CaptionTextView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -149,6 +154,7 @@
 			children = (
 				10A55C44250FF961009D47AE /* AuthService.swift */,
 				103EFA002515E7C100D9E24D /* UserService.swift */,
+				1EA6848E253216F400D443D3 /* TweetServices.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -307,6 +313,7 @@
 			files = (
 				103EFA012515E7C100D9E24D /* UserService.swift in Sources */,
 				1038FDB225056DEF008E48CB /* NotificationsController.swift in Sources */,
+				1E65FE13251F518B00AA778F /* CaptionTextView.swift in Sources */,
 				1038FDB425056E11008E48CB /* ConversationsController.swift in Sources */,
 				106E4F7B2507712800C8F4A2 /* Utilities.swift in Sources */,
 				1038FD8C250565E3008E48CB /* AppDelegate.swift in Sources */,
@@ -321,6 +328,7 @@
 				107C65BB2506598A0018BD4B /* RegistrationController.swift in Sources */,
 				1038FDAE25056DA2008E48CB /* FeedController.swift in Sources */,
 				10A55C43250FF2EC009D47AE /* Constants.swift in Sources */,
+				1EA6848F253216F400D443D3 /* TweetServices.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

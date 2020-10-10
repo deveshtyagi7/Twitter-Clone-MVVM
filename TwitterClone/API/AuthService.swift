@@ -24,7 +24,6 @@ struct AuthService {
     }
     
     func registerUser(with credentials : AuthCredentials , completion : @escaping(Error? ,DatabaseReference) -> Void){
-        print("auth callled")
         guard let imageData = credentials.profileImage.jpegData(compressionQuality: 0.3) else { return }
         let filename = NSUUID().uuidString
         let storageRef = STORAGE_PROFILE_IMAGES.child(filename)
