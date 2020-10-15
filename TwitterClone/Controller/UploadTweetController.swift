@@ -29,7 +29,7 @@ class UploadTweetController: UIViewController {
         return button
     }()
     
-    let profileImageView : UIImageView = {
+   private let profileImageView : UIImageView = {
        let iv = UIImageView()
         iv.backgroundColor = .twitterBlue
         iv.contentMode = .scaleAspectFit
