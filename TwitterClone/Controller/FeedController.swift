@@ -9,11 +9,15 @@
 import UIKit
 import SDWebImage
 import FirebaseAuth
-class FeedController : UIViewController{
+
+private let reuseIdentifier = "TweetCell"
+
+
+class FeedController : UICollectionViewController{
     //MARK: - Properties
     var user : User? {
         didSet{
-            print(user?.profileImageUrl)
+        print(user?.profileImageUrl)
            configureLeftBarButton()
         }
     }
@@ -63,6 +67,9 @@ class FeedController : UIViewController{
     func configureUI()  {
         view.backgroundColor = .white
         
+        collectionView.register(TweetCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.backgroundColor = .white
+        
         let imageView = UIImageView(image: UIImage(named: "twitter_logo_blue"))
         imageView.contentMode = .scaleAspectFit
         imageView.setDimensions(width: 44, height: 44)
@@ -80,5 +87,22 @@ class FeedController : UIViewController{
             print("Error while loging out \(error.localizedDescription)")
         }
        
+    }
+}
+
+extension FeedController{
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        return cell
+    }
+}
+
+extension FeedController : UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: 200)
     }
 }
