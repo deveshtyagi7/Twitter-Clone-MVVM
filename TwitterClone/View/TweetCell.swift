@@ -7,6 +7,9 @@
 //
 
 import UIKit
+protocol TweetCellDelegate : class {
+    func handleProfileImageTapped(_ cell : TweetCell)
+}
 
 class TweetCell: UICollectionViewCell {
     //MARK: - Properties
@@ -16,18 +19,23 @@ class TweetCell: UICollectionViewCell {
         }
     }
     
-    private let profileImageView : UIImageView = {
-        let iv = UIImageView()
-         iv.backgroundColor = .twitterBlue
-         iv.contentMode = .scaleAspectFit
-         iv.clipsToBounds = true
-         iv.setDimensions(width: 48, height: 48)
-         iv.layer.cornerRadius = 48 / 2
-         
-         return iv
-     }()
+    weak var delegate : TweetCellDelegate?
     
-    private let captionLabel : UILabel = {
+    private lazy var profileImageView : UIImageView = {
+        let iv = UIImageView()
+        iv.backgroundColor = .twitterBlue
+        iv.contentMode = .scaleAspectFit
+        iv.clipsToBounds = true
+        iv.setDimensions(width: 48, height: 48)
+        iv.layer.cornerRadius = 48 / 2
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileImagetapped))
+        iv.addGestureRecognizer(tap)
+        iv.isUserInteractionEnabled = true
+        return iv
+    }()
+    
+    private lazy var captionLabel : UILabel = {
         let label = UILabel()
         label.text = "Some caption"
         label.font = UIFont.systemFont(ofSize: 14)
@@ -83,7 +91,7 @@ class TweetCell: UICollectionViewCell {
         profileImageView.anchor(top: topAnchor , left: leftAnchor,
                                 paddingTop: 8, paddingLeft: 8)
         
-       
+        
         let stack = UIStackView(arrangedSubviews: [infoLabel, captionLabel])
         stack.axis = .vertical
         stack.distribution = .fillProportionally
@@ -103,7 +111,7 @@ class TweetCell: UICollectionViewCell {
         addSubview(actionStack)
         actionStack.centerX(inView: self)
         actionStack.anchor(bottom: bottomAnchor, paddingBottom: 8)
-      
+        
         
         let underlineView =  UIView()
         underlineView.backgroundColor = .systemGroupedBackground
@@ -116,6 +124,10 @@ class TweetCell: UICollectionViewCell {
     }
     
     //MARK: - Selectors
+    @objc func handleProfileImagetapped(){
+        delegate?.handleProfileImageTapped(self)
+    }
+    
     @objc func handleCommentTapped(){
         
     }
