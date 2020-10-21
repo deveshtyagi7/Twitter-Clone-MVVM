@@ -177,8 +177,8 @@
 			isa = PBXGroup;
 			children = (
 				10A55C44250FF961009D47AE /* AuthService.swift */,
-				103EFA002515E7C100D9E24D /* UserService.swift */,
 				1EA6848E253216F400D443D3 /* TweetServices.swift */,
+				103EFA002515E7C100D9E24D /* UserService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";

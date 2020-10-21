@@ -9,8 +9,8 @@
 
 import Firebase
 
-struct TweerServices {
-    static let shared = TweerServices()
+struct TweetServices {
+    static let shared = TweetServices()
     
     func uploadTweet(caption : String, completion : @escaping(Error?, DatabaseReference) -> Void){
         guard let uid = Auth.auth().currentUser?.uid else { return }
@@ -44,5 +44,25 @@ struct TweerServices {
             
         }
     }
+    
+    func fetchTweet(forUser user : User , completion :@escaping([Tweet]) -> Void){
+        var tweets = [Tweet]()
+        REF_USER_TWEETS.child(user.uid).observe(.childAdded) { (snapshot) in
+            let tweetID = snapshot.key
+            
+            REF_TWEETS.child(tweetID).observeSingleEvent(of: .value) { (snapshot) in
+                guard let dict = snapshot.value as? [String : Any] else { return }
+                guard let uid = dict["uid"] as? String else { return }
+                
+                UserService.shared.fetchUser(uid: uid) { (user) in
+                    let tweet = Tweet(user: user, tweetID: tweetID, dict: dict)
+                    tweets.append(tweet)
+                    completion(tweets)
+                }
+            }
+        }
+    }
+    
+    
 }
 
