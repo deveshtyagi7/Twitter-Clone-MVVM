@@ -7,8 +7,19 @@
 //
 
 import UIKit
+protocol ProfileHeaderDelegate : class {
+    func handleDismiss()
+}
 class ProfileHeader : UICollectionReusableView {
     //MARK: - Properties
+    
+    var user :User? {
+        didSet{
+            configure()
+        }
+    }
+    
+    weak var delegate : ProfileHeaderDelegate?
     private let filterBar = ProfileFilterView()
     
     private lazy var containerView : UIView = {
@@ -80,6 +91,22 @@ class ProfileHeader : UICollectionReusableView {
         return view
     }()
     
+    private let followingLabel : UILabel = {
+       let lbl = UILabel()
+        let followTap = UITapGestureRecognizer(target: self, action: #selector(handleFollowersTapped))
+        lbl.isUserInteractionEnabled = true
+        lbl.addGestureRecognizer(followTap)
+        return lbl
+    }()
+    
+    private let followerLabel : UILabel = {
+       let lbl = UILabel()
+        let followTap = UITapGestureRecognizer(target: self, action: #selector(handleFollowingTapped))
+        lbl.isUserInteractionEnabled = true
+        lbl.addGestureRecognizer(followTap)
+        return lbl
+    }()
+    
     //MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -111,6 +138,14 @@ class ProfileHeader : UICollectionReusableView {
         stack.anchor(top: profileImageView.bottomAnchor, left: leftAnchor,
                      right: rightAnchor , paddingTop: 8,
                      paddingLeft: 12, paddingRight: 12)
+        let followStack = UIStackView(arrangedSubviews: [followingLabel, followerLabel])
+        followStack.axis = .horizontal
+        followStack.spacing = 8
+        followStack.distribution = .fillEqually
+        
+        addSubview(followStack)
+        followStack.anchor(top: stack.bottomAnchor , left: leftAnchor,
+                           paddingTop: 8, paddingLeft: 12)
         
         addSubview(filterBar)
         filterBar.delegate = self
@@ -127,11 +162,29 @@ class ProfileHeader : UICollectionReusableView {
     
     //MARK: - Selectors
     @objc func handleDismiss(){
-        
+        delegate?.handleDismiss()
     }
     
     @objc func handleEditProfileFollow(){
         
+    }
+    
+    @objc func handleFollowersTapped(){
+        
+    }
+    @objc func handleFollowingTapped(){
+        
+    }
+    
+    //MARK: - Helpers
+    func configure(){
+        guard let user = user else { return }
+        let viewModel = ProfileHeaderViewModel(user: user)
+        
+        profileImageView.sd_setImage(with: user.profileImageUrl)
+        editProfileFollowButton.setTitle(viewModel.actionButtonTitle, for: .normal)
+        followerLabel.attributedText = viewModel.followersString
+        followingLabel.attributedText = viewModel.followingString
     }
 }
 
