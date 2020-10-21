@@ -20,7 +20,11 @@ struct TweerServices {
                       "likes" : 0,
                       "retweets": 0,
                       "caption" : caption] as [String : Any]
-        REF_TWEETS.childByAutoId().updateChildValues(values, withCompletionBlock: completion)
+        let tweetId = REF_TWEETS.childByAutoId()
+        tweetId.updateChildValues(values) { (err, ref) in
+            guard let tweetId = tweetId.key else { return }
+            REF_USER_TWEETS.child(uid).updateChildValues([tweetId : 1], withCompletionBlock: completion)
+        }
     }
     
     func fetchTweets(completion: @escaping([Tweet]) -> Void){
