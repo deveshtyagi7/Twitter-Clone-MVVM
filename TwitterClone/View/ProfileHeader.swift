@@ -66,14 +66,12 @@ class ProfileHeader : UICollectionReusableView {
        let lbl = UILabel()
         lbl.font = UIFont.systemFont(ofSize: 16)
         lbl.textColor = .lightGray
-        lbl.text = "DeveshTyagi7"
         return lbl
     }()
     
-    private let fullname : UILabel = {
+    private let fullnameLabel : UILabel = {
        let lbl = UILabel()
         lbl.font = UIFont.boldSystemFont(ofSize: 20)
-        lbl.text = "Devesh Tyagi"
         return lbl
     }()
     
@@ -129,7 +127,7 @@ class ProfileHeader : UICollectionReusableView {
         editProfileFollowButton.setDimensions(width: 100 , height: 36)
         editProfileFollowButton.layer.cornerRadius = 36 / 2
         
-        let stack = UIStackView(arrangedSubviews: [fullname, usernameLabel, bioLabel])
+        let stack = UIStackView(arrangedSubviews: [fullnameLabel, usernameLabel, bioLabel])
         stack.axis = .vertical
         stack.distribution = .fillProportionally
         stack.spacing = 4
@@ -185,6 +183,9 @@ class ProfileHeader : UICollectionReusableView {
         editProfileFollowButton.setTitle(viewModel.actionButtonTitle, for: .normal)
         followerLabel.attributedText = viewModel.followersString
         followingLabel.attributedText = viewModel.followingString
+        
+        fullnameLabel.text = user.fullname
+        usernameLabel.text = viewModel.usernameText
     }
 }
 
