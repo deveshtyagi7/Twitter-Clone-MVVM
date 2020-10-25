@@ -12,7 +12,7 @@ private let headerIdentifier = "ProfileHeader"
 class ProfileController: UICollectionViewController {
     
     //MARK: - Properties
-    private let user : User
+    private var user : User
     
     private var tweets = [Tweet](){
         didSet {
@@ -34,7 +34,9 @@ class ProfileController: UICollectionViewController {
         super.viewDidLoad()
         configureCollectionView()
         fetchTweets()
+        checkIfUserIsFollowing()
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -57,6 +59,13 @@ class ProfileController: UICollectionViewController {
     func fetchTweets(){
         TweetServices.shared.fetchTweet(forUser: user) { (tweets) in
             self.tweets = tweets
+        }
+    }
+    
+    func checkIfUserIsFollowing() {
+        UserService.shared.checkIfUserIsFollowing(uid: user.uid) { (isFollowed) in
+            self.user.isFollowed = isFollowed
+            self.collectionView.reloadData()
         }
     }
 }
@@ -94,9 +103,20 @@ extension ProfileController : UICollectionViewDelegateFlowLayout {
     //MARK:- ProfileHeaderDelegate
 extension ProfileController : ProfileHeaderDelegate{
     func handleEditprofileFollow(_ header: ProfileHeader) {
-        UserService.shared.followUser(uid: user.uid) { (ref, err) in
-            
+      
+        if user.isFollowed{
+            UserService.shared.unfollowUser(uid: user.uid) { (err, ref) in
+                self.user.isFollowed = false
+                self.collectionView.reloadData()
+            }
+        } else {
+            UserService.shared.followUser(uid: user.uid) { (err , ref) in
+                self.user.isFollowed = true
+                self.collectionView.reloadData()
+            }
         }
+        
+        
     }
     
     func handleDismiss() {

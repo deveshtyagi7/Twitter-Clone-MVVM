@@ -52,7 +52,7 @@ class ProfileHeader : UICollectionReusableView {
         return iv
     }()
     
-    private lazy var editProfileFollowButton : UIButton = {
+     lazy var editProfileFollowButton : UIButton = {
         let btn = UIButton(type: .system)
         btn.setTitle("Loading", for: .normal)
         btn.layer.borderColor = UIColor.twitterBlue.cgColor
