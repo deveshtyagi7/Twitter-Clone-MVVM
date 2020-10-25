@@ -9,6 +9,7 @@
 import UIKit
 protocol ProfileHeaderDelegate : class {
     func handleDismiss()
+    func handleEditprofileFollow(_ header : ProfileHeader)
 }
 class ProfileHeader : UICollectionReusableView {
     //MARK: - Properties
@@ -164,7 +165,7 @@ class ProfileHeader : UICollectionReusableView {
     }
     
     @objc func handleEditProfileFollow(){
-        
+        delegate?.handleEditprofileFollow(self)
     }
     
     @objc func handleFollowersTapped(){
