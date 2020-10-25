@@ -68,6 +68,13 @@ class ProfileController: UICollectionViewController {
             self.collectionView.reloadData()
         }
     }
+    
+    func fetchUserStats(){
+        UserService.shared.fetchUserStats(uid: user.uid) { (stats) in
+            self.user.stats = stats
+            self.collectionView.reloadData()
+        }
+    }
 }
     //MARK: - UICollectionViewDelegate/DataSource
 extension ProfileController {
