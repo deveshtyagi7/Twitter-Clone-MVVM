@@ -35,6 +35,7 @@ class ProfileController: UICollectionViewController {
         configureCollectionView()
         fetchTweets()
         checkIfUserIsFollowing()
+        fetchUserStats()
     }
     
     

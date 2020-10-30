@@ -65,6 +65,8 @@ struct UserService {
                 let following = snapshot.children.allObjects.count
                 
                 let stats = UserRelationStats(followers: followers, following: following)
+                
+                completion(stats)
             }
         }
 
