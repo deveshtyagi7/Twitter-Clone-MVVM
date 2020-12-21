@@ -24,7 +24,7 @@ class TweetCell: UICollectionViewCell {
     private lazy var profileImageView : UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .twitterBlue
-        iv.contentMode = .scaleAspectFit
+        iv.contentMode = .scaleToFill
         iv.clipsToBounds = true
         iv.setDimensions(width: 48, height: 48)
         iv.layer.cornerRadius = 48 / 2
