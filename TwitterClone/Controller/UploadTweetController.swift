@@ -7,12 +7,14 @@
 //
 
 import UIKit
+
 class UploadTweetController: UIViewController {
     
     //MARK: - Properties
     
     private let user : User
-    
+    private var config : UploadTweetConfiguration
+    private lazy var viewModel = UploadTweetViewModel(config: config)
     private lazy var actionButton : UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = .twitterBlue
@@ -45,8 +47,9 @@ class UploadTweetController: UIViewController {
     
     //MARK: - Lifecycle
     
-    init(user : User){
+    init(user : User , config : UploadTweetConfiguration){
         self.user = user
+        self.config = config
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -58,6 +61,13 @@ class UploadTweetController: UIViewController {
         super.viewDidLoad()
        
         configureUI()
+        switch config {
+        case .tweet:
+            print()
+        case .reply(let tweet):
+            print()
+        
+        }
     }
     
     //MARK: - Selectors
@@ -89,7 +99,7 @@ class UploadTweetController: UIViewController {
         let stack = UIStackView(arrangedSubviews: [profileImageView, captionTextView])
         stack.axis = .horizontal
         stack.spacing = 12
-        
+        stack.alignment = .leading
         view.addSubview(stack)
         stack.anchor(top : view.safeAreaLayoutGuide.topAnchor,
                      left : view.leftAnchor ,right: view.rightAnchor,
