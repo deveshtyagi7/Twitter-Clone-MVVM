@@ -12,6 +12,10 @@ private let headerIdentifier = "TweetHeader"
 class TweetController : UICollectionViewController{
     //MARK: - Properties
     private let tweet : Tweet
+    
+    private var replies = [Tweet]() {
+        didSet{ collectionView.reloadData()}
+    }
     //MARK: - LifeCycle
     
     init(tweet : Tweet){
@@ -26,8 +30,14 @@ class TweetController : UICollectionViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
+        fetchReplies()
     }
-    
+    //MARK: - Apis
+    func fetchReplies(){
+        TweetServices.shared.fetxhReplies(forTweet: tweet) { (replies) in
+            self.replies = replies
+        }
+    }
     //MARK: - Helpers
     func configureCollectionView(){
         collectionView.backgroundColor = .white
@@ -43,10 +53,12 @@ class TweetController : UICollectionViewController{
     //MARK: - UICollectionViewDataSource
 extension TweetController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return replies.count
     }
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! TweetCell
+        cell.tweet = replies[indexPath.row]
         return cell
     }
 }

@@ -12,7 +12,7 @@ import Firebase
 struct TweetServices {
     static let shared = TweetServices()
     
-    func uploadTweet(caption : String, completion : @escaping(Error?, DatabaseReference) -> Void){
+    func uploadTweet(caption : String, type : UploadTweetConfiguration, completion : @escaping(DatabaseCompletion)){
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
         let values = ["uid" : uid,
@@ -20,11 +20,17 @@ struct TweetServices {
                       "likes" : 0,
                       "retweets": 0,
                       "caption" : caption] as [String : Any]
-        let tweetId = REF_TWEETS.childByAutoId()
-        tweetId.updateChildValues(values) { (err, ref) in
-            guard let tweetId = tweetId.key else { return }
-            REF_USER_TWEETS.child(uid).updateChildValues([tweetId : 1], withCompletionBlock: completion)
+        switch type {
+        case .tweet:
+         
+                REF_TWEETS.childByAutoId().updateChildValues(values) { (err, ref) in
+                guard let tweetId = ref.key else { return }
+                REF_USER_TWEETS.child(uid).updateChildValues([tweetId : 1], withCompletionBlock: completion)
+            }
+        case .reply(let tweet) :
+            REF_TWEET_REPLIES.child(tweet.tweetID).childByAutoId().updateChildValues(values, withCompletionBlock: completion)
         }
+        
     }
     
     func fetchTweets(completion: @escaping([Tweet]) -> Void){
@@ -63,6 +69,20 @@ struct TweetServices {
         }
     }
     
+    func fetxhReplies(forTweet tweet : Tweet, completion : @escaping([Tweet]) -> Void){
+        var tweets = [Tweet]()
+        
+        REF_TWEET_REPLIES.child(tweet.tweetID).observe(.childAdded) { (snapshot) in
+            guard let dict = snapshot.value as? [String : Any] else { return }
+            guard let uid = dict["uid"] as? String else { return }
+            let tweetID = snapshot.key
+            UserService.shared.fetchUser(uid: uid) { (user) in
+                let tweet = Tweet(user: user, tweetID: tweetID, dict: dict)
+                tweets.append(tweet)
+                completion(tweets)
+            }
+        }
+    }
     
 }
 

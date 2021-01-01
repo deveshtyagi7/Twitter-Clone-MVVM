@@ -119,6 +119,7 @@
 		1038FD8A250565E3008E48CB /* TwitterClone */ = {
 			isa = PBXGroup;
 			children = (
+				1038FDAA250569EF008E48CB /* Utils */,
 				1038FDA525056674008E48CB /* View */,
 				1038FDA62505667B008E48CB /* Model */,
 				1038FDA9250569E7008E48CB /* API */,
@@ -131,7 +132,6 @@
 				1038FD94250565E6008E48CB /* Assets.xcassets */,
 				1038FD96250565E6008E48CB /* LaunchScreen.storyboard */,
 				1038FD91250565E3008E48CB /* Main.storyboard */,
-				1038FDAA250569EF008E48CB /* Utils */,
 			);
 			path = TwitterClone;
 			sourceTree = "<group>";
