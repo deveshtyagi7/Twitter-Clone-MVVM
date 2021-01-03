@@ -9,6 +9,12 @@
 import UIKit
 class ActionSheetCell : UITableViewCell {
     //MARK: - Properties
+    
+    var option : ActionSheetOption? {
+        didSet{
+            configure()
+        }
+    }
     private let optionImageView : UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
@@ -20,7 +26,6 @@ class ActionSheetCell : UITableViewCell {
     private let titleLable : UILabel = {
         let lbl = UILabel()
         lbl.font = UIFont.systemFont(ofSize: 18)
-        lbl.text = "Test Option"
         return lbl
     }()
     //MARK: - Lifecycle
@@ -43,7 +48,10 @@ class ActionSheetCell : UITableViewCell {
     }
     
     //MARK: - Properties
-    //MARK: - Properties
+    //MARK: - Helper
+    func configure(){
+        textLabel?.text = option?.description
+    }
 
     
 }
