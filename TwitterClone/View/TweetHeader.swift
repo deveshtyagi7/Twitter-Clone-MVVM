@@ -7,6 +7,10 @@
 //
 
 import UIKit
+
+protocol TweetHeaderDelegate : class{
+    func showActionSheet()
+}
 class TweetHeader : UICollectionReusableView{
     //MARK: - Properties
     var tweet : Tweet?{
@@ -14,6 +18,8 @@ class TweetHeader : UICollectionReusableView{
             configure()
         }
     }
+    
+    weak var delegate : TweetHeaderDelegate?
     //MARK: - Lifecycle
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -165,7 +171,7 @@ class TweetHeader : UICollectionReusableView{
         print("Go to User Profile")
     }
     @objc func showActionSheet(){
-        print("Show action sheet")
+        delegate?.showActionSheet()
     }
     @objc func handleCommentTapped(){
         

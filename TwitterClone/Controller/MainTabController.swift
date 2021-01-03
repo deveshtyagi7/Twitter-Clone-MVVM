@@ -57,7 +57,6 @@ class MainTabController: UITabBarController {
                 self.present(nav, animated: true, completion: nil)
             }
         } else {
-            print("authenticated")
             configureViewControllers()
             configureUI()
             fetchUser()

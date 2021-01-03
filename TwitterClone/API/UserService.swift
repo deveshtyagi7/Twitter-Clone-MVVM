@@ -16,7 +16,6 @@ struct UserService {
             guard let dict = snapshot.value as? [String : AnyObject] else { return }
             
             let user = User(uid: uid, dict: dict)
-            print("FEtched USer")
             completion(user)
         }
     }
@@ -51,7 +50,6 @@ struct UserService {
         guard let currentUid = Auth.auth().currentUser?.uid else { return }
         
         REF_USER_FOLLOWING.child(currentUid).child(uid).observeSingleEvent(of: .value) { (snapshot) in
-            print("\(snapshot.exists())")
             completion(snapshot.exists())
         }
 

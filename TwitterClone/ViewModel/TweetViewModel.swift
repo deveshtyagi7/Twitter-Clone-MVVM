@@ -49,7 +49,6 @@ struct TweetViewModel {
         title.append(NSAttributedString(string: " • \(timestamp)",
                                         attributes: [.font : UIFont.systemFont(ofSize: 14),
                                                      .foregroundColor : UIColor.lightGray]))
-        print("DEBUG : Time= \(timestamp)")
         return title
     }
     
