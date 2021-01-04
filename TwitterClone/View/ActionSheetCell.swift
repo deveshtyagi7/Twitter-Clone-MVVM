@@ -23,7 +23,7 @@ class ActionSheetCell : UITableViewCell {
         return iv
     }()
     
-    private let titleLable : UILabel = {
+    private lazy var titleLbl : UILabel = {
         let lbl = UILabel()
         lbl.font = UIFont.systemFont(ofSize: 18)
         return lbl
@@ -37,9 +37,9 @@ class ActionSheetCell : UITableViewCell {
         optionImageView.anchor(left : leftAnchor, paddingLeft: 8)
         optionImageView.setDimensions(width: 36, height: 36)
         
-        addSubview(titleLable)
-        titleLable.centerY(inView: self)
-        titleLable.anchor(left : optionImageView.rightAnchor , paddingLeft: 12)
+        addSubview(titleLbl)
+        titleLbl.centerY(inView: self)
+        titleLbl.anchor(left : optionImageView.rightAnchor , paddingLeft: 12)
         
     }
     
@@ -50,7 +50,7 @@ class ActionSheetCell : UITableViewCell {
     //MARK: - Properties
     //MARK: - Helper
     func configure(){
-        textLabel?.text = option?.description
+        titleLbl.text = option?.description
     }
 
     
