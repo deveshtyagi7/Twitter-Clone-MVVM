@@ -80,8 +80,11 @@ class UploadTweetController: UIViewController {
         guard let caption = captionTextView.text else { return }
         TweetServices.shared.uploadTweet(caption: caption, type: config) { (error, ref) in
             if error != nil{
-                print("Error while uploadind tweet ==> \(error?.localizedDescription)")
+                print("Error while uploadind tweet ==> \(error!.localizedDescription)")
             } else {
+                if case .reply(let tweet) = self.config {
+                    NotificationService.shared.uploadNotification(type: .reply, tweet: tweet)
+                }
                 self.dismiss(animated: true, completion: nil)
             }
         }
