@@ -7,6 +7,10 @@
 //
 
 import UIKit
+
+protocol NotificationCellDelegate : class {
+    func didTapProfileImage(_ cell : NotificationCell)
+}
 class NotificationCell : UITableViewCell{
     //MARK: - Properties
     var notification: Notification? {
@@ -14,7 +18,7 @@ class NotificationCell : UITableViewCell{
             configure()
         }
     }
-    
+    weak var delegate : NotificationCellDelegate?
     private lazy var profileImageView : UIImageView = {
         let iv = UIImageView()
         iv.backgroundColor = .twitterBlue
@@ -22,10 +26,10 @@ class NotificationCell : UITableViewCell{
         iv.clipsToBounds = true
         iv.setDimensions(width: 40, height: 40)
         iv.layer.cornerRadius = 40 / 2
-        
+        iv.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleProfileImagetapped))
         iv.addGestureRecognizer(tap)
-        iv.isUserInteractionEnabled = true
+        
         return iv
     }()
     
@@ -56,10 +60,9 @@ class NotificationCell : UITableViewCell{
     }
     
     
-    
     //MARK: - Selector
     @objc func handleProfileImagetapped(){
-        
+        delegate?.didTapProfileImage(self)
     }
     //MARK: - Helper
     func configure(){
