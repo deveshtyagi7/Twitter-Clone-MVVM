@@ -6,6 +6,7 @@ target 'TwitterClone' do
   use_frameworks!
 
   # Pods for TwitterClone
+	pod 'Firebase'
 	pod 'Firebase/Core'
 	pod 'Firebase/Database'
 	pod 'Firebase/Storage'
